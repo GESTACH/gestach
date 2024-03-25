@@ -1,0 +1,192 @@
+        <nav class="mt-2 " STYLE="font-size: small;">
+             <nav class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="true">
+                  <!-- Add icons to the links using the .nav-icon class
+                       with font-awesome or any other icon font library -->
+                  <li class="nav-item menu-open">
+                    <a href="{% url 'gestach:tableau_bord' %}" class="nav-link active">
+                      <i class="nav-icon fas fa-tachometer-alt"></i>
+                      <p>
+                        Tableau de bord
+                        <i class="right fas fa-angle-left"></i>
+                      </p>
+                    </a>
+                  </li>
+        
+                  <li class="nav-header">EXECUTION</li>
+                    
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="nav-icon fas fa-chart-pie"></i>
+                      <p>
+                        Planification
+                        <i class="right fas fa-angle-left"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="{% url 'gestach:actions_liste' %}" class="nav-link">
+                          <i class="nav-icon far fa-circle text-danger"></i>
+                          <p class="text">Actions</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link">
+                          <i class="nav-icon far fa-circle text-warning"></i>
+                          <p>Activités</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="{% url 'gestach:activites_liste' %}" class="nav-link">
+                          <i class="nav-icon far fa-circle text-info"></i>
+                          <p>Taches</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="{% url 'gestach:ateliers_liste' %}" class="nav-link">
+                          <i class="nav-icon far fa-circle text-indigo"></i>
+                          <p>Ateliers</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+        
+                  <li class="nav-item">
+                    <a href="{% url 'gestach:diligences_liste' %}" class="nav-link">
+                      <i class="nav-icon fas fa-th"></i>
+                      <p>
+                        Diligences
+                        <span class="right badge badge-primary">Nouveau</span>
+                      </p>
+                    </a>
+                  </li>
+                  <li class="nav-header" style="text-decoration: underline;">DOCUMENTATION</li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <span class="badge badge-info right">6</span>
+                      <i class="nav-icon fas fa-copy"></i>
+                      <p>
+                        Rapports
+        
+                      </p>
+                    </a>
+                  </li>
+        
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="nav-icon far fa-envelope"></i>
+                      <p>
+                        Messagerie
+                        <i class="fas fa-angle-left right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="pages/mailbox/mailbox.html" class="nav-link">
+                          <i class="far fa-circle text-fuchsia"></i>
+                          <p>Courriers</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="pages/mailbox/compose.html" class="nav-link">
+                          <i class="far fa-circle text-blue"></i>
+                          <p>Chat</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="pages/mailbox/read-mail.html" class="nav-link">
+                          <i class="far fa-circle text-green"></i>
+                          <p>Mail</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+        
+                  <li class="nav-header" style="text-decoration: underline;">UTILISATEURS</li>
+        
+                  <li class="nav-item">
+                      <a href="#" class="nav-link">
+                          <i class="nav-icon fas fa-user-friends"></i>
+                          <p>
+                            Ressources Humaines
+                            <i class="fas fa-angle-left right"></i>
+                          </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                          <li class="nav-item">
+                            <a href="pages/forms/general.html" class="nav-link">
+                              <i class="fas fa-user-shield"></i>
+                              <p>Personnel</p>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="pages/forms/advanced.html" class="nav-link">
+                              <i class="fas fa-user-check"></i>
+                              <p>Demande d'autorisation</p>
+                            </a>
+                          </li>
+                      </ul>
+                  </li>
+        
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="nav-icon fas fa-table"></i>
+                      <p>
+                        Tables
+                        <i class="fas fa-angle-left right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="pages/tables/simple.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Simple Tables</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="pages/tables/data.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>DataTables</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="pages/tables/jsgrid.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>jsGrid</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-header">PERSO</li>
+                  <li class="nav-item">
+                    <a href="pages/calendar.html" class="nav-link">
+                      <i class="nav-icon far fa-calendar-alt"></i>
+                      <p>
+                        Agenda
+                        <span class="badge badge-info right">2</span>
+                      </p>
+                    </a>
+                  </li>
+                  <li class="nav-header">PARAMETRES</li>
+                  <li class="nav-item">
+                    <a href="pages/gallery.html" class="nav-link">
+                      <i class="nav-icon far fa-image"></i>
+                      <p>
+                        Groupes et permissions
+                      </p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="pages/kanban.html" class="nav-link">
+                      <i class="nav-icon fas fa-columns"></i>
+                      <p>
+                        Système
+                      </p>
+                    </a>
+                  </li>
+                
+             </nav>
+                <div class="sidebar-custom">
+                  <a href="#" class="btn btn-link"><i class="fas fa-cogs"></i></a>
+                  <a href="#" class="btn btn-secondary hide-on-collapse pos-right">Help</a>
+                </div>
+        </nav> 

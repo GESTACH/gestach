@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation de votre inscription</title>
+</head>
+<body> 
+    <p>Bonjour Cher Utilisateur de Gestach,</p>
+    <p>Nous sommes ravi de confirmer l'existence de votre email : {{ user.email }}</p>
+    <p>Votre compte a donc été créé avec succès. </p>
+    
+    <p>Votre nom d'utilisateur temporaire est : {{ user.username }}</p>
+    <p>Votre mot de passe temporaire est : {{ password }}</p>
+    
+    Cependant, vous pouvez modifier ces informations temporaires en cliquant sur le lien en dessous.
+   
+    <p>Si le lien ne fonctionne pas, vous pouvez également copier et coller l'URL suivante dans votre navigateur :</p>
+    <p>{{ final_inscription_url }}</p>
+    
+    <p>Pour toutes questions, n'hésitez pas à contacter l'équipe technique de Gestach.</p>
+    
+    <p>Merci.</p>
+
+</body>
+</html>

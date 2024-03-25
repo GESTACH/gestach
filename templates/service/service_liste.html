@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+    {% block title %}Liste des Services{% endblock %}
+
+    {% block header %}Bienvenue sur la liste des services{% endblock %}
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Table Hierarchique</title>
+    
+<div class="content-wrapper">
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Organigramme</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">DataTables</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+
+
+    <section class="content">
+        <div class="col-12">
+            <div class="mb-3">
+              <label type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+            </div>
+
+            <div class="mb-3">
+              <label type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
+            </div>
+            
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Services</th>
+                            <th class="text-right">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Service 1 -->
+                        <tr class="parent-row">
+                            <td>
+                                <button class="toggle-btn">+</button> Service 1
+                                <table class="sub-table table table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <td>Employee 1.1</td>
+                                            <td class="text-right">Action</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Employee 1.2</td>
+                                            <td class="text-right">Action</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td class="text-right">Action</td>
+                        </tr>
+            
+                        <!-- Service 2 -->
+                        <tr class="parent-row">
+                            <td>
+                                <button class="toggle-btn">+</button> Service 2
+                                <table class="sub-table table table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <td>Employee 2.1</td>
+                                            <td class="text-right">Action</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Employee 2.2</td>
+                                            <td class="text-right">Action</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td class="text-right">Action</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>            
+              <!-- /.card-header -->
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Services</th>
+                            <th class="text-right">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Service 1 -->
+                        <tr>
+                            <td>
+                                Service 1
+                                <table class="table table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <td>Employee 1.1</td>
+                                            <td class="text-right">Action</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Employee 1.2</td>
+                                            <td class="text-right">Action</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td class="text-right">Action</td>
+                        </tr>
+            
+                        <!-- Service 2 -->
+                        <tr>
+                            <td>
+                                Service 2
+                                <table class="table table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <td>Employee 2.1</td>
+                                            <td class="text-right">Action</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Employee 2.2</td>
+                                            <td class="text-right">Action</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td class="text-right">Action</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+
+
+
+</section>
+    
+
+    
+    <link rel="stylesheet" href="style_svc.css">
+
+    <div class="content-wrapper">
+        <!-- ... Votre contenu ici ... -->
+    </div>
+
+    <script src="script.js"></script>
+{% endblock %}

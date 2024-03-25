@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Log in (v2)</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+</head>
+
+<body class="hold-transition login-page">
+    
+<div class="login-box">
+  <!-- /.login-logo -->
+  <div class="card card-outline card-primary">
+      <div class="card-header text-center">
+         <a href="#" class="h2">
+         <b>Gestach</b> <br>Connexion</a>
+      </div>
+    <div class="card-body">
+        <p class="login-box-msg rounded-lg mb-4" style="background-color: rgba(59,178,189,0.16)">
+            Connectez-vous maintenant pour démarrer votre session
+        </p>
+        <form method="post" action="{% url "index" %}">
+        {% csrf_token %}
+   
+                {% for message in messages %}
+                {{ message }} 
+                {% endfor %}
+        
+            <div class="input-group mb-2">
+              <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+            </div>
+                   
+            <div class="input-group mb-3">
+              <input type="password" name="password" id="password" class="form-control" placeholder="Mot de passe">
+            </div>
+            <p class="mb-1" style ="text-align: right">
+                <a href="{% url 'auth:user_pass_oublie' %}">Mot de passe oublié ?</a>
+            </p> 
+            
+            <div class="row mb-4">
+             <!-- /.col -->
+                <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+               <!-- /.col -->
+            </div>
+        </form>
+    
+
+            <p class="mb-3">
+                <a href="{% url 'auth:user_register' %}" class="text-center" style="color: #02b46a">Créer l'administrateur</a>
+            </p>
+    
+            <p class="mb-3">
+                <a href="{% url 'auth:tableau_bord' %}" class="text-center" style="color: #02b46a">tableau de bord</a>
+            </p>
+            <p class="mb-3">
+                <a href="{% url 'plan:action_list' %}" class="text-center" style="color: #02b46a">actions</a>
+            </p>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<!-- Bootstrap 4 -->
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+</body>
+</html>

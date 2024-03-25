@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #87CEEB; /* Bleu ciel en arrière-plan */
+}
+
+.form-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 100% de la hauteur de la vue */
+}
+
+form {
+    background-color: #00FA9A; /* Vert fluor pour la div */
+    padding: 20px;
+    border-radius: 10px; /* Bordures arrondies */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+form .btn {
+    background-color: #5bc0de; /* Couleur Bootstrap */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form .btn:hover {
+    background-color: #428bca; /* Couleur Bootstrap en survol */
+}
+
+form .btn-cancel {
+    background-color: #d9534f; /* Couleur Bootstrap pour Annuler */
+}
+
+form .btn-cancel:hover {
+    background-color: #c9302c; /* Couleur Bootstrap pour Annuler en survol */
+}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ action.nom }}</h1>
+    <p>{{ action.description }}</p>
+    <p>Date de début: {{ action.date_debut }}</p>
+    <p>Date de fin: {{ action.date_fin }}</p>
+
+    <h2>Équipes affectées à cette action:</h2>
+    <ul>
+    {% for action_equipe in action_equipes %}
+        <li>{{ action_equipe.equipe.nom }}</li>
+    {% endfor %}
+    </ul>
+
+    <a href="{% url 'plan:action_update' action.pk %}">Modifier l'action</a>
+    <a href="{% url 'plan:action_delete' action.pk %}">Supprimer l'action</a>
+    <a href="{% url 'plan:action_equipe_create' action.pk %}">Affecter une équipe à cette action</a>
+{% endblock %}

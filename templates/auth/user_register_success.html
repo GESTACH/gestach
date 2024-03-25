@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% extends 'layouts/base-fullscreen.html' %}
+{% block title %} Connexion {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<html lang="fr">
+
+<body class="hold-transition login-page">
+    
+<div class="login-box">
+  <!-- /.login-logo -->
+  <div class="card card-outline card-primary ">
+      <div class="card-header text-center bg-default">
+         <a href="#" class="h2 text-white">
+         <b >Gestach</b> <small> <br>Finalisation de l'inscription et<br> activation du compte. </small> </a>
+      </div>
+    <div class="card-body">
+        
+        <form>
+        {% csrf_token %}
+        <p class="login-box-msg rounded-lg mb-4 text-dark" style="background-color: rgba(5,239,146,0.51)">
+                {% for message in messages %}
+                {{ message }} 
+                {% endfor %}
+        </p>
+                
+ 
+        </form>
+    
+
+            <p class="mb-3">
+
+            </p>
+    
+            <p class="mb-3">
+
+            </p>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}{% endblock javascripts %}

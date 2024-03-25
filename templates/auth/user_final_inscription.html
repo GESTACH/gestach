@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+{% extends 'layouts/base-fullscreen.html' %}
+{% block title %} Connexion {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<body class="hold-transition register-page">
+<div class="register-box">
+  <div class="card card-outline card-primary">
+    <div class="card-header text-center bg-default">
+      <a href="#" class="h1 text-white"><b>Gestach</b> <br>Administration</a>
+    </div>
+    <div class="card-body">
+        <p class="login-box-msg rounded-lg text-default"><b>Finalisation de l'inscription</b> <br> Modification des informations des informations personnelles et confirmation du mot de passe.</p>
+      <form method="post">
+
+          {% csrf_token %}
+
+        
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                <a> {{ message }} </a>
+                </div>
+            {% endfor %}  
+        
+            
+      
+        <div >
+            {{ form.as_p }}
+        </div>
+
+          
+            
+        <div class="row">
+            
+          <!-- /.col -->
+            <button type="submit" class="btn btn-primary btn-block">Finaliser l'inscription</button>
+          <!-- /.col -->
+        </div>
+          
+      </form>
+    </div>
+    <!-- /.form-box -->
+  </div><!-- /.card -->
+</div>
+<!-- /.register-box -->
+
+    {% endblock content %}
+
+    <!-- Specific JS goes HERE -->
+    {% block javascripts %}{% endblock javascripts %}
+

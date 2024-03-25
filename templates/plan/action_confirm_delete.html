@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Supprimer l'action</h1>
+    <p>Êtes-vous sûr de vouloir supprimer l'action "{{ action.nom }}" ?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Oui, supprimer</button>
+        <a href="{% url 'plan:action_detail' action.pk %}">Annuler</a>
+    </form>
+{% endblock %}
