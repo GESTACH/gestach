@@ -61,25 +61,25 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{% url 'plan:action_list'%}" class="nav-link">
-                  <i class="nav-icon far fa-circle text-danger"></i>
+                  <i class="far fa-circle text-danger"></i>
                   <p class="text">Actions</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{% url 'plan:activite_list' %}" class="nav-link">
-                  <i class="nav-icon far fa-circle text-warning"></i>
+                  <i class="far fa-circle text-warning"></i>
                   <p>Activités</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{% url 'plan:tache_list' %}" class="nav-link">
-                  <i class="nav-icon far fa-circle text-info"></i>
+                  <i class="far fa-circle text-info"></i>
                   <p>Taches</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{% url 'plan:tache_list' %}" class="nav-link">
-                  <i class="nav-icon far fa-circle text-indigo"></i>
+                <a href="{% url 'plan:atelier_list' %}" class="nav-link">
+                  <i class="far fa-circle text-indigo"></i>
                   <p>Ateliers</p>
                 </a>
               </li>
@@ -87,7 +87,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="{% url 'plan:tache_list' %}" class="nav-link">
+            <a href="{% url 'plan:diligence_list' %}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Diligences
@@ -97,7 +97,7 @@
           </li>
           <li class="nav-header" style="text-decoration: underline;">DOCUMENTATION</li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{% url 'rapport:rapport_list' %}" class="nav-link">
               <span class="badge badge-info right">6</span>
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -117,7 +117,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/mailbox/mailbox.html" class="nav-link">
+                <a href="{% url 'courrier:courrier_arrive' %}" class="nav-link">
                   <i class="far fa-circle text-fuchsia"></i>
                   <p>Courriers</p>
                 </a>
@@ -149,15 +149,21 @@
               </a>
               <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="pages/forms/general.html" class="nav-link">
+                    <a href="#" class="nav-link">
                       <i class="fas fa-user-shield"></i>
                       <p>Personnel</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/forms/advanced.html" class="nav-link">
+                    <a href="#" class="nav-link">
                       <i class="fas fa-user-check"></i>
                       <p>Demande d'autorisation</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="fas fa-user-check"></i>
+                      <p>Ordre de mission</p>
                     </a>
                   </li>
               </ul>
@@ -176,7 +182,7 @@
           </li>
           <li class="nav-header">PARAMETRES</li>
           <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Groupes et permissions
@@ -184,7 +190,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/kanban.html" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Organisation administrative

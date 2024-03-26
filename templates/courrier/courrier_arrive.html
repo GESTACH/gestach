@@ -1,0 +1,449 @@
+
+  <!-- Main Sidebar Container -->
+{% extends 'base.html' %}
+{% block content %}
+
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+
+            <h1>Gestion des Courriers</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <a href="{% url 'courrier:courrier_sortant' %}" class="btn btn-primary btn-block mb-3">Nouveau Courrier</a>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+<section class="content">
+      <div class="container-fluid">
+        <div class="row container-fluid">
+
+          <!-- /.col -->
+          <div class="container-fluid">
+            <div class="card">
+              <div class="card-header p-2">
+                <ul class="nav nav-pills">
+                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Boîte de réception</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Courriers envoyés</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Boîte de soumission</a></li>
+                </ul>
+              </div><!-- /.card-header -->
+              <div class="card-body ">
+                <div class="tab-content">
+                  <div class="active tab-pane" id="activity">
+
+                    <div class="post">
+                       <div class="row">
+                           <div class="active tab-pane container-fluid" id="recu">
+                              <div class="card card-primary card-outline ">
+                                <div class="card-header">
+                                  <h3 class="card-title">Courriers arrivés</h3>
+
+                                  <div class="card-tools">
+                                    <div class="input-group input-group-sm">
+                                      <input type="text" class="form-control" placeholder="Rechercher">
+                                      <div class="input-group-append">
+                                        <div class="btn btn-primary">
+                                          <i class="fas fa-search"></i>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!-- /.card-tools -->
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body p-0">
+                                  <div class="mailbox-controls">
+                                    <!-- Check all button -->
+                                    <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
+                                    </button>
+                                    <div class="btn-group">
+                                      <button type="button" class="btn btn-default btn-sm">
+                                        <i class="far fa-trash-alt"></i>
+                                      </button>
+                                      <button type="button" class="btn btn-default btn-sm">
+                                        <i class="fas fa-reply"></i>
+                                      </button>
+                                      <button type="button" class="btn btn-default btn-sm">
+                                        <i class="fas fa-share"></i>
+                                      </button>
+                                    </div>
+                                    <!-- /.btn-group -->
+                                    <button type="button" class="btn btn-default btn-sm">
+                                      <i class="fas fa-sync-alt"></i>
+                                    </button>
+                                    <div class="float-right">
+                                      1-50/200
+                                      <div class="btn-group">
+                                        <button type="button" class="btn btn-default btn-sm">
+                                          <i class="fas fa-chevron-left"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-sm">
+                                          <i class="fas fa-chevron-right"></i>
+                                        </button>
+                                      </div>
+                                      <!-- /.btn-group -->
+                                    </div>
+                                    <!-- /.float-right -->
+                                  </div>
+                                  <div class="table-responsive mailbox-messages">
+                                    <table class="table table-hover table-striped">
+                                      <tbody>
+                                      <tr>
+                                        <td>
+                                          <div class="icheck-primary">
+                                            <input type="checkbox" value="" id="check1">
+                                            <label for="check1"></label>
+                                          </div>
+                                        </td>
+                                        <td class="mailbox-star"><a href="{% url 'courrier:courrier_views' %}"><i class="fas fa-star text-warning"></i></a></td>
+                                        <td class="mailbox-name"><a href="{% url 'courrier:courrier_views' %}">Service des études</a></td>
+                                        <td class="mailbox-subject"><b>Nouveaux marchés</b> - Pour la vérification des nouveaux marchés...
+                                        </td>
+                                        <td class="mailbox-attachment"></td>
+                                        <td class="mailbox-date">il y a 5 minutes</td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          <div class="icheck-primary">
+                                            <input type="checkbox" value="" id="check2">
+                                            <label for="check2"></label>
+                                          </div>
+                                        </td>
+                                        <td class="mailbox-star"><a href="{% url 'courrier:courrier_views' %}"><i class="fas fa-star-o text-warning"></i></a></td>
+                                        <td class="mailbox-name"><a href="{% url 'courrier:courrier_views' %}">Secrétariat</a></td>
+                                        <td class="mailbox-subject"><b>Courrier d'exécution</b> - Rendez-vous au Ministère du plan pour affair vous concernant
+                                        </td>
+                                        <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
+                                        <td class="mailbox-date">il y <a href=""></a> 28mn</td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          <div class="icheck-primary">
+                                            <input type="checkbox" value="" id="check3">
+                                            <label for="check3"></label>
+                                          </div>
+                                        </td>
+                                        <td class="mailbox-star"><a href="{% url 'courrier:courrier_views' %}"><i class="fas fa-star-o text-warning"></i></a></td>
+                                        <td class="mailbox-name"><a href="{% url 'courrier:courrier_views' %}">Direction général de planification</a></td>
+                                        <td class="mailbox-subject"><b>Ordre de mission</b> - Nouvel ordre de mission...
+                                        </td>
+                                        <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
+                                        <td class="mailbox-date">il à 11 heures</td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          <div class="icheck-primary">
+                                            <input type="checkbox" value="" id="check4">
+                                            <label for="check4"></label>
+                                          </div>
+                                        </td>
+                                        <td class="mailbox-star"><a href="{% url 'courrier:courrier_views' %}"><i class="fas fa-star text-warning"></i></a></td>
+                                        <td class="mailbox-name"><a href="{% url 'courrier:courrier_views' %}">Alexander Pierce</a></td>
+                                        <td class="mailbox-subject"><b>Atelier de direction</b> - Vous êtes convié à assister à un atelier sur...
+                                        </td>
+                                        <td class="mailbox-attachment"></td>
+                                        <td class="mailbox-date">il y a 2 jours</td>
+                                      </tr>
+                                      </tbody>
+                                    </table>
+                                    <!-- /.table -->
+                                  </div>
+                                  <!-- /.mail-box-messages -->
+                                </div>
+                                <!-- /.card-body -->
+                                <div class="card-footer p-0">
+                                  <div class="mailbox-controls">
+                                    <!-- Check all button -->
+                                    <button type="button" class="btn btn-default btn-sm checkbox-toggle">
+                                      <i class="far fa-square"></i>
+                                    </button>
+                                    <div class="btn-group">
+                                      <button type="button" class="btn btn-default btn-sm">
+                                        <i class="far fa-trash-alt"></i>
+                                      </button>
+                                      <button type="button" class="btn btn-default btn-sm">
+                                        <i class="fas fa-reply"></i>
+                                      </button>
+                                      <button type="button" class="btn btn-default btn-sm">
+                                        <i class="fas fa-share"></i>
+                                      </button>
+                                    </div>
+                                    <!-- /.btn-group -->
+                                    <button type="button" class="btn btn-default btn-sm">
+                                      <i class="fas fa-sync-alt"></i>
+                                    </button>
+                                    <div class="float-right">
+                                      1-50/200
+                                      <div class="btn-group">
+                                        <button type="button" class="btn btn-default btn-sm">
+                                          <i class="fas fa-chevron-left"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-sm">
+                                          <i class="fas fa-chevron-right"></i>
+                                        </button>
+                                      </div>
+                                      <!-- /.btn-group -->
+                                    </div>
+                                    <!-- /.float-right -->
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- /.card -->
+                            </div>
+
+                       </div>                     <!-- /.user-block -->
+
+                    </div>
+                    <!-- /.post -->
+                  </div>
+                  <!-- /.tab-pane -->
+                  <div class="tab-pane" id="timeline">
+                    <!-- The timeline -->
+                    <div class="row">
+                           <div class="active tab-pane container-fluid" id="recu">
+                              <div class="card card-primary card-outline card-info">
+                                <div class="card-header">
+                                  <h3 class="card-title">Envoies</h3>
+
+                                    <div class="card-tools">
+                                        <div class="input-group input-group-sm">
+                                           <input type="text" class="form-control" placeholder="Rechercher">
+                                            <div class="input-group-append">
+                                               <div class="btn btn-primary">
+                                                  <i class="fas fa-search"></i>
+                                               </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  <!-- /.card-tools -->
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body p-0">
+                                  <div class="mailbox-controls">
+                                    <!-- Check all button -->
+                                    <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
+                                    </button>
+                                    <div class="btn-group">
+                                      <button type="button" class="btn btn-default btn-sm">
+                                        <i class="far fa-trash-alt"></i>
+                                      </button>
+                                      <button type="button" class="btn btn-default btn-sm">
+                                        <i class="fas fa-reply"></i>
+                                      </button>
+                                      <button type="button" class="btn btn-default btn-sm">
+                                        <i class="fas fa-share"></i>
+                                      </button>
+                                    </div>
+                                    <!-- /.btn-group -->
+                                    <button type="button" class="btn btn-default btn-sm">
+                                      <i class="fas fa-sync-alt"></i>
+                                    </button>
+                                    <div class="float-right">
+                                      1-50/200
+                                      <div class="btn-group">
+                                        <button type="button" class="btn btn-default btn-sm">
+                                          <i class="fas fa-chevron-left"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-sm">
+                                          <i class="fas fa-chevron-right"></i>
+                                        </button>
+                                      </div>
+                                      <!-- /.btn-group -->
+                                    </div>
+                                    <!-- /.float-right -->
+                                  </div>
+                                  <div class="table-responsive mailbox-messages">
+                                    <table class="table table-hover table-striped">
+                                      <tbody>
+                                      <tr>
+                                        <td>
+                                          <div class="icheck-primary">
+                                            <input type="checkbox" value="" id="check1">
+                                            <label for="check1"></label>
+                                          </div>
+                                        </td>
+                                        <td class="mailbox-star"><a href="{% url 'courrier:courrier_views' %}"><i class="fas fa-star text-warning"></i></a></td>
+                                        <td class="mailbox-name"><a href="{% url 'courrier:courrier_views' %}">Service des études</a></td>
+                                        <td class="mailbox-subject"><b>Nouveaux marchés</b> - Pour la vérification des nouveaux marchés...
+                                        </td>
+                                        <td class="mailbox-attachment"></td>
+                                        <td class="mailbox-date">il y a 5 minutes</td>
+                                      </tr>
+                                      </tbody>
+                                    </table>
+                                    <!-- /.table -->
+                                  </div>
+                                  <!-- /.mail-box-messages -->
+                                </div>
+                                <!-- /.card-body -->
+                                <div class="card-footer p-0">
+                                  <div class="mailbox-controls">
+                                    <!-- Check all button -->
+                                    <button type="button" class="btn btn-default btn-sm checkbox-toggle">
+                                      <i class="far fa-square"></i>
+                                    </button>
+                                    <div class="btn-group">
+                                      <button type="button" class="btn btn-default btn-sm">
+                                        <i class="far fa-trash-alt"></i>
+                                      </button>
+                                      <button type="button" class="btn btn-default btn-sm">
+                                        <i class="fas fa-reply"></i>
+                                      </button>
+                                      <button type="button" class="btn btn-default btn-sm">
+                                        <i class="fas fa-share"></i>
+                                      </button>
+                                    </div>
+                                    <!-- /.btn-group -->
+                                    <button type="button" class="btn btn-default btn-sm">
+                                      <i class="fas fa-sync-alt"></i>
+                                    </button>
+                                    <div class="float-right">
+                                      1-50/200
+                                      <div class="btn-group">
+                                        <button type="button" class="btn btn-default btn-sm">
+                                          <i class="fas fa-chevron-left"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-sm">
+                                          <i class="fas fa-chevron-right"></i>
+                                        </button>
+                                      </div>
+                                      <!-- /.btn-group -->
+                                    </div>
+                                    <!-- /.float-right -->
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- /.card -->
+                            </div>
+
+                       </div>
+                  </div>
+                  <!-- /.tab-pane -->
+
+                  <div class="tab-pane" id="settings">
+                        <div class="card card-primary card-outline card-danger">
+                            <div class="card-header">
+                              <h3 class="card-title">Pour soumission</h3>
+
+                                <div class="card-tools">
+                                   <div class="input-group input-group-sm">
+                                      <input type="text" class="form-control" placeholder="Rechercher">
+                                        <div class="input-group-append">
+                                          <div class="btn btn-primary">
+                                            <i class="fas fa-search"></i>
+                                          </div>
+                                        </div>
+                                   </div>
+                                </div>
+                            </div>
+                         </div>
+                      <div class="card-body p-0">
+                                  <div class="mailbox-controls">
+                                    <!-- Check all button -->
+                                    <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
+                                    </button>
+                                    <div class="btn-group">
+                                      <button type="button" class="btn btn-default btn-sm">
+                                        <i class="far fa-trash-alt"></i>
+                                      </button>
+                                      <button type="button" class="btn btn-default btn-sm">
+                                        <i class="fas fa-reply"></i>
+                                      </button>
+                                      <button type="button" class="btn btn-default btn-sm">
+                                        <i class="fas fa-share"></i>
+                                      </button>
+                                    </div>
+                                    <!-- /.btn-group -->
+                                    <button type="button" class="btn btn-default btn-sm">
+                                      <i class="fas fa-sync-alt"></i>
+                                    </button>
+                                    <div class="float-right">
+                                      1-50/200
+                                      <div class="btn-group">
+                                        <button type="button" class="btn btn-default btn-sm">
+                                          <i class="fas fa-chevron-left"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-sm">
+                                          <i class="fas fa-chevron-right"></i>
+                                        </button>
+                                      </div>
+                                      <!-- /.btn-group -->
+                                    </div>
+                                    <!-- /.float-right -->
+                                  </div>
+                                  <div class="table-responsive mailbox-messages">
+                                    <table class="table table-hover table-striped">
+                                      <tbody>
+
+                                      </tbody>
+                                    </table>
+                                  </div>
+                      </div>
+                  </div>
+
+                </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+
+    {% endblock %}
+
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="/static/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/static/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/static/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/static/dist/js/demo.js"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    //Enable check and uncheck all functionality
+    $('.checkbox-toggle').click(function () {
+      var clicks = $(this).data('clicks')
+      if (clicks) {
+        //Uncheck all checkboxes
+        $('.mailbox-messages input[type=\'checkbox\']').prop('checked', false)
+        $('.checkbox-toggle .far.fa-check-square').removeClass('fa-check-square').addClass('fa-square')
+      } else {
+        //Check all checkboxes
+        $('.mailbox-messages input[type=\'checkbox\']').prop('checked', true)
+        $('.checkbox-toggle .far.fa-square').removeClass('fa-square').addClass('fa-check-square')
+      }
+      $(this).data('clicks', !clicks)
+    })
+
+    //Handle starring for font awesome
+    $('.mailbox-star').click(function (e) {
+      e.preventDefault()
+      //detect type
+      var $this = $(this).find('a > i')
+      var fa    = $this.hasClass('fa')
+
+      //Switch states
+      if (fa) {
+        $this.toggleClass('fa-star')
+        $this.toggleClass('fa-star-o')
+      }
+    })
+  })
+</script>
+

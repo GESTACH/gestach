@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Envoie de courriers</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <a href="{% url 'courrier:courrier_arrive' %}" class="btn btn-primary btn-block mb-3">Boîte de reception</a>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- /.col -->
+        <div class="col-md-8 mx-auto">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title">Nouveau méssage</h3>
+            </div>
+
+            <div class="card-body">
+              <select id="input" class="form-control form-group ">
+                  <option disabled>Expéditeur</option>
+                  <option>Koffi Adoni</option>
+                  <option>Coulibaly Salif</option>
+                  <option>Famien Johnatan</option>
+              </select>
+
+              <div class="form-group">
+                <input class="form-control" placeholder="A :">
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="Objet :">
+              </div>
+              <div class="form-group">
+                  <textarea id="compose-textarea" class="form-control" style="height: 100px">
+
+                  </textarea>
+              </div>
+              <div class="form-group">
+                <div class="btn btn-default btn-file">
+                  <i class="fas fa-paperclip"></i>
+                  <input type="file" name="Pièce jointe">
+                </div>
+                  <button type="reset" class="btn btn-default"><i class="fas fa-times"></i> </button>
+                <p class="help-block">Max. 32MB</p>
+                  <button type="submit" class="btn btn-primary float-right"><i class="far fa-envelope"></i> Soumettre pour appréciation </button>
+                  
+              </div>
+
+
+
+            </div>
+
+            <!-- /.card-footer -->
+          </div>
+          <!-- /.card -->
+        </div>
+
+        <!-- /.col -->
+      </div>
+    </section>
+{% endblock %}
+<!-- jQuery -->
+<script src="/static/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/static/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/static/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/static/dist/js/demo.js"></script>
+<!-- Page specific script -->
+<script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    //Add text editor
+    $('#compose-textarea').summernote()
+  })
+</script>
+

@@ -1,10 +1,193 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="card rounded ml-2 mt-1 mr-2" style="background-color: rgba(216,205,220,0.23)">
+        <div class="card-header">
+                <div class="col-sm">
+                    <h4>Liste des diligences</h4>
+                </div>
+                <div class="card-tools">
+                    <a href="#" class="btn btn-primary btn-sm ml-auto mr-1" data-toggle="modal" data-target="#actionModal" data-url="{% url 'plan:action_create' %}">
+                        <i class="fas fa-plus"></i> Nouvelle diligence
+                    </a>
+                </div>
+        </div>
+    </div>
 
-</body>
-</html>
+    <section class="content">
+        <div class="card card-outline card-yellow" style="background-color: rgba(179,5,248,0.09)">
+
+            <div class="card-tools d-flex align-items-center justify-content-between mb-1 ">
+                <!-- Formulaire à gauche -->
+                <form method="GET" action="" class="mt-2 ml-2">
+                    <div class="input-group input-group-sm">
+                        <input type="date" name="start_date" class="form-control ml-1" placeholder="Date de début">
+                        <input type="date" name="end_date" class="form-control ml-1 mr-2" placeholder="Date de fin">
+                        <input type="text" name="q" class="form-control" placeholder="Rechercher...">
+                        <div class="input-group-append ">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+            <div class="card-body p-0 ml-2 mr-1">
+                <table class="table small-box-footer table-hover">
+                    <thead class="small" >
+                        <tr class="small">
+                            <th>Diligence</th>
+                            <th>Progression</th>
+                            <th>Date fin</th>
+                            <th>Statut</th>
+                            <th>Equipes</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for activite in activite %}
+                        <tr>
+                            <td>
+                                <a href="#" class="text-center">
+                                    <small>{{ activite.titre }}</small>
+                                </a>
+                                <br>
+                                <small>
+                                    Créée le {{ activite.date_debut }} pour {{ activite.duree }} jours
+                                </small>
+                            </td>
+                            <td class="project_progress">
+                              <div class="progress progress-sm">
+                                  <div class="progress-xs bg-green" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 47%">
+                                  </div>
+                              </div>
+                              <small>
+                                  47% terminé
+                              </small>
+                            </td>
+                            <td>
+                                <small>{{ activite.date_fin }}</small>
+                            </td>
+                            <td>
+                                {% if activite.statut == 'en_cours' %}
+                                    <span class="badge badge-warning">En cours</span>
+                                {% elif activite.statut == 'terminee' %}
+                                    <span class="badge badge-success">Terminée</span>
+                                {% else %}
+                                    <span class="badge badge-secondary">{{ activite.statut }}</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ activite.activites.count }}</td>
+                            <td>{{ activite.activite_equipes.count }}</td>
+                            <td class="project-actions text-right">
+                                <div class="btn-group " role="group">
+                                    <button type="button" class="btn sm overlay" data-bs-toggle="dropdown" aria-expanded="true">
+                                      ...
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="btn-sm" href="{% url 'plan:action_detail' action.pk %}">Détails</a></li>
+                                        <li><a href="#" class="btn-sm" data-toggle="modal" data-target="#actionModal" data-action-id="{{ action.pk }}">Modifier</a>
+                                        <li><a class="btn-sm" href="{% url 'plan:action_delete' action.pk %}">Supprimer</a></li>
+                                        <li><a class="btn-sm" href="{% url 'plan:action_equipe_create' action.pk %}">Créer une digence</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        {% for activite_equipe in activite.activite_equipes.all %}
+                        <tr>
+                            <td colspan="8"></td>
+                            <td class="project-actions text-right">
+                                <a class="btn btn-info btn-sm" href="{% url 'plan:action_equipe_update' action_equipe.pk %}">
+                                    <i class="fas fa-pencil-alt"></i> Modifier l'équipe
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer clearfix">
+                <ul class="pagination pagination-sm m-0 float-right">
+                  <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="modal fade" id="actionModal" tabindex="-1" role="dialog" aria-labelledby="actionModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="actionModalLabel">{% if form.instance.pk %}Modifier l'action{% else %}Créer une nouvelle diligence{% endif %}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="actionForm" method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+    
+    <script>
+    $(document).ready(function() {
+        $('#actionModal').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var url = button.data('url'); // Extract URL from data-url attribute
+
+            // If URL is defined
+            if (url !== undefined) {
+                // Load content from URL via AJAX
+                $(this).find('.modal-content').load(url);
+            }
+        });
+    });
+</script>
+ {% block extra_js %}
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var actionModal = document.getElementById('actionModal');
+    var actionForm = document.getElementById('actionForm');
+
+    actionModal.addEventListener('show.bs.modal', function(event) {
+      var button = event.relatedTarget; // Button that triggered the modal
+      var actionId = button.getAttribute('data-action-id'); // Get the action ID from the button's data attribute
+
+      if (actionId) {
+        // Fetch the action data and populate the form
+        fetch('{% url "plan:action_detail" 0 %}'.replace('0', actionId))
+          .then(response => response.json())
+          .then(data => {
+            // Update the form fields with the action data
+            actionForm.elements['titre'].value = data.titre;
+            actionForm.elements['type_action'].value = data.type_action;
+            actionForm.elements['description'].value = data.description;
+            actionForm.elements['date_debut'].value = data.date_debut;
+            actionForm.elements['duree'].value = data.duree;
+            // Update other form fields as needed
+          })
+          .catch(error => {
+            console.error('Erreur lors de la récupération des données de l\'action:', error);
+            alert('Erreur lors de la récupération des données de l\'action.');
+          });
+      }
+    });
+  });
+</script>
+{% endblock %}
+    
+{% endblock %}

@@ -17,12 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from gestach.views import views_auth
+from gestach.views import views_courrier
+from gestach.views import views_rapport
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views_auth.index, name='index'),
     path('gestach/', include('gestach.urls.urls_auth')),
     path('gestach/', include('gestach.urls.urls_plan')),
-
+    path('gestach/', include('gestach.urls.urls_courrier')),
+    path('gestach/', include('gestach.urls.urls_rapport')),
 ]
 

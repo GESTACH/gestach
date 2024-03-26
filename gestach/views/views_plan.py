@@ -236,13 +236,14 @@ def diligence_list(request):
     return render(request, 'plan/diligence_list.html', {'activites': diligences})
 
 
-def diligence_detail(request, pk):
-    diligence = get_object_or_404(Diligence, pk=pk)
-    return render(request, 'plan/diligence_detail.html', {'diligence': diligence})
+def diligence_detail(request):
+    diligence = get_object_or_404(Diligence)
+    return render(request, 'plan/diligence_detail.html')
 
 
 def diligence_create(request):
     return render(request, 'plan/diligence_form.html')
+
 
 def diligence_update(request, pk):
     diligence = get_object_or_404(Diligence, pk=pk)
@@ -256,25 +257,13 @@ def diligence_update(request, pk):
     return render(request, 'plan/diligence_form.html', {'form': form})
 
 
-def activite_delete(request, pk):
-    activite = get_object_or_404(Activite, pk=pk)
-    if request.method == 'POST':
-        activite.delete()
-        return redirect('plan:activite_list')
-    return render(request, 'plan/activite_confirm_delete.html', {'activite': activite})
+def atelier(request):
+    return render(request, 'plan/atelier_liste.html')
 
 
-def activite_equipe_create(request, activite_pk):
-    activite = get_object_or_404(Activite, pk=activite_pk)
-    if request.method == 'POST':
-        form = ActiviteEquipeForm(request.POST)
-        if form.is_valid():
-            activite_equipe = form.save(commit=False)
-            activite_equipe.action = activite.action  #
-            activite_equipe.save()
-            return redirect('plan:activite_detail', pk=activite.pk)
-    else:
-        form = ActiviteEquipeForm()
-    return render(request, 'plan/activite_equipe_form.html', {'form': form, 'activite': activite})
+def agenda_perso(request):
+    return render(request, 'agenda_perso.html')
 
 
+def calendrier(request):
+    return render(request, 'calendrier.html')

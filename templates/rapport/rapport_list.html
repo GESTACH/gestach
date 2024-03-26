@@ -1,10 +1,143 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block content %}
+<div class="card rounded ml-2 mt-1 mr-2" style="background-color: rgba(216,205,220,0.23)">
+    <div class="card-header">
+        <div class="col-sm">
+            <h4>Liste des Rapports</h4>
+        </div>
+    </div>
+</div>
+
+    <section class="content">
+        <div class="card card-outline card-danger" style="background-color: rgba(44,239,22,0.15)">
+
+            <div class="card-tools d-flex align-items-center justify-content-between mb-1 ">
+                <!-- Formulaire à gauche -->
+                <form method="GET" action="" class="mt-2 ml-2">
+                    <div class="input-group input-group-sm">
+                        <input type="date" name="start_date" class="form-control ml-1" placeholder="Date de début">
+                        <input type="date" name="end_date" class="form-control ml-1 mr-2" placeholder="Date de fin">
+                        <input type="text" name="q" class="form-control" placeholder="Rechercher...">
+                        <div class="input-group-append ">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+            <div class="card-body p-0 ml-2 mr-1">
+                <table class="table small-box-footer table-hover">
+                    <thead class="small" >
+                        <tr class="small">
+                            <th>Date du rapport</th>
+                            <th>titre</th>
+                            <th>Titulaire</th>
+                            <th>Statut</th>
+                            <th>Adressé à</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for action in actions %}
+                        <tr>
+                            <td>
+                                <a href="#" class="text-center">
+                                    <small>{{ action.titre }}</small>
+                                </a>
+                                <br>
+                                <small>
+                                    Créée le {{ action.date_debut }} pour {{ action.duree }} jours
+                                </small>
+                            </td>
+                            <td class="project_progress">
+                              <div class="progress progress-sm">
+                                  <div class="progress-xs bg-green" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 47%">
+                                  </div>
+                              </div>
+                              <small>
+                                  47% terminé
+                              </small>
+                            </td>
+                            <td>
+                                <small>{{ action.date_fin }}</small>
+                            </td>
+                            <td>
+                                {% if action.statut == 'en_cours' %}
+                                    <span class="badge badge-warning">En cours</span>
+                                {% elif action.statut == 'terminee' %}
+                                    <span class="badge badge-success">Terminée</span>
+                                {% else %}
+                                    <span class="badge badge-secondary">{{ action.statut }}</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ action.activites.count }}</td>
+                            <td>{{ action.action_equipes.count }}</td>
+                            <td class="project-actions text-right">
+                                <div class="btn-group " role="group">
+                                    <button type="button" class="btn sm overlay" data-bs-toggle="dropdown" aria-expanded="true">
+                                      ...
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="btn-sm" href="{% url 'plan:action_detail' action.pk %}">Détails</a></li>
+                                        <li><a href="#" class="btn-sm" data-toggle="modal" data-target="#actionModal" data-url="{% url 'plan:action_update' action.pk %}">Modifier</a>
+                                        <li><a class="btn-sm" href="{% url 'plan:action_delete' action.pk %}">Supprimer</a></li>
+                                        <li><a class="btn-sm" href="{% url 'plan:action_equipe_create' action.pk %}">Créer une équipe</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        {% for action_equipe in action.action_equipes.all %}
+                        <tr>
+                            <td colspan="8"></td>
+                            <td class="project-actions text-right">
+                                <a class="btn btn-info btn-sm" href="{% url 'plan:action_equipe_update' action_equipe.pk %}">
+                                    <i class="fas fa-pencil-alt"></i> Modifier l'équipe
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer clearfix">
+                <ul class="pagination pagination-sm m-0 float-right">
+                  <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                </ul>
+            </div>
+        </div>
+<div class="modal fade" id="actionModal" tabindex="-1" role="dialog" aria-labelledby="actionModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{% if form.instance.pk %}Modifier l'action{% else %}Créer une nouvelle action{% endif %}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Form rendering -->
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="row mb-4">
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary btn-block">Enregistrer</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

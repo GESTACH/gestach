@@ -17,7 +17,7 @@ from gestach.views.views_plan import (
     tache_create,
     tache_update,
     tache_delete,
-    tache_equipe_create, agenda_perso, activite,
+    tache_equipe_create, agenda_perso, activite, atelier, diligence_list, calendrier
 )
 
 app_name = 'plan'
@@ -46,5 +46,8 @@ urlpatterns = [
     path('taches_delete/<int:pk>/', tache_delete, name='tache_delete'),
     path('taches_equipe_create/<int:tache_pk>/', tache_equipe_create, name='tache_equipe_create'),
 
-    path('agenda_perso/', agenda_perso, name='agenda_perso')
+    path('agenda_perso/', agenda_perso, name='agenda_perso'),
+    path('atelier_list/', atelier, name='atelier_list'),
+    path('diligence_list/', diligence_list, name='diligence_list'),
+    path('calendrier/', calendrier, name='calendrier'),
 ]

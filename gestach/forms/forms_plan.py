@@ -14,6 +14,7 @@ class ActionForm(forms.ModelForm):
             'duree': forms.NumberInput(attrs={'class': 'form-control', 'style': 'width: 100%'}),
         }
 
+
 class ActionEquipeForm(forms.ModelForm):
     class Meta:
         model = ActionEquipe

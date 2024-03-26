@@ -1,5 +1,5 @@
-
 {% load static %}
+
 <div class="modal fade" id="actionModal" tabindex="-1" role="dialog" aria-labelledby="actionModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -10,7 +10,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form method="post">
+        <form id="actionForm" method="post">
           {% csrf_token %}
           {{ form.as_p }}
       </div>
@@ -25,26 +25,25 @@
 
 {% block extra_js %}
 <script>
-  $(document).ready(function() {
-    $('#actionModal').on('show.bs.modal', function(event) {
-      var button = $(event.relatedTarget); // Button that triggered the modal
-      var actionId = button.data('action-id'); // Get the action ID from the button's data attribute
+  document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById('actionModal').addEventListener('show.bs.modal', function(event) {
+      var button = event.relatedTarget; // Button that triggered the modal
+      var actionId = button.dataset.actionId; // Get the action ID from the button's data attribute
 
       if (actionId) {
         // Fetch the action data and populate the form
-        $.ajax({
-          url: '{% url "plan:action_detail" 0 %}'.replace('0', actionId), // Replace with the appropriate URL to fetch the action data
-          method: 'GET',
-          success: function(data) {
+        fetch('{% url "plan:action_detail" 0 %}'.replace('0', actionId))
+          .then(response => response.json())
+          .then(data => {
             // Update the form fields with the action data
-            $('#actionForm input[name="titre"]').val(data.titre);
-            $('#actionForm textarea[name="description"]').val(data.description);
+            document.getElementById('actionForm').elements['titre'].value = data.titre;
+            document.getElementById('actionForm').elements['description'].value = data.description;
             // Update other form fields as needed
-          },
-          error: function() {
-            alert('Erreur lors de la récupération des données de l'action.');
-          }
-        });
+          })
+          .catch(error => {
+            console.error('Erreur lors de la récupération des données de l\'action:', error);
+            alert('Erreur lors de la récupération des données de l\'action.');
+          });
       }
     });
   });
